@@ -24,6 +24,6 @@ class Repo(object):
             files = ' '.join(files)
             shell('git add ' + files)
         else:
-            raise TypeError('Files has to be list, not {0}').format(
-                            type_str(files))
+            raise TypeError('Files has to be list, not {0}'.format(
+                            type_str(files)))
 
