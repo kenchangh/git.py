@@ -1,3 +1,4 @@
+import os
 import re
 from shelldon import call as shell
 
@@ -14,8 +15,11 @@ def type_str(object_):
 
 class Repo(object):
 
-    def __init__(self):
-        pass
+    def __init__(self, repo = os.getcwd()):
+        self.repo = repo
+
+    def init(self):
+        shell('git init')
 
     def add(self, files = []):
         if files == []:
