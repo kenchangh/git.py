@@ -27,5 +27,5 @@ def call(cmd):
 def split_cmd(cmd):
     cmd_lines = cmd.splitlines()
     cmd_lines = map(lambda line: line.strip(), cmd_lines)
-    cmd_lines = filter(lambda x: x != '', cmd_lines)
+    cmd_lines = filter(lambda line: line != '', cmd_lines)
     return cmd_lines
