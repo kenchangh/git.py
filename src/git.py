@@ -1,12 +1,12 @@
 import os
 import re
-from shelldon import call as shell
+import shell
 
 class TypeError(Exception):
     def __init__(self, message):
         Exception.__init__(self, message)
 
-def type_str(object_):
+def type_in_str(object_):
     with_type = str(type(object_)) 
     # Return string between single quote
     match = re.findall("'([^']*)'", with_type)
@@ -23,11 +23,11 @@ class Repo(object):
 
     def add(self, files = []):
         if files == []:
-            shell('git add --all :/')
+            shell.call('git add --all :/')
         elif type(files) is list:
             files = ' '.join(files)
-            shell('git add ' + files)
+            shell.call('git add ' + files)
         else:
             raise TypeError('Files has to be list, not {0}'.format(
-                            type_str(files)))
+                            type_in_str(files)))
 
