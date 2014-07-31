@@ -1,5 +1,5 @@
 import re
-from shelldon import call as shell
+import shell
 
 class TypeError(Exception):
     def __init__(self, message):
@@ -19,10 +19,10 @@ class Repo(object):
 
     def add(self, files = []):
         if files == []:
-            shell('git add --all :/')
+            shell.call('git add --all :/')
         elif type(files) is list:
             files = ' '.join(files)
-            shell('git add ' + files)
+            shell.call('git add ' + files)
         else:
             raise TypeError('Files has to be list, not {0}'.format(
                             type_str(files)))
