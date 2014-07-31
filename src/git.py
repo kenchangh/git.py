@@ -19,7 +19,7 @@ class Repo(object):
         self.repo = repo
 
     def init(self):
-        shell('git init')
+        shell.call('git init')
 
     def add(self, files = []):
         if files == []:
