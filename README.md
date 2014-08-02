@@ -14,7 +14,7 @@ from git import Repo
 repo  = Repo('~/Desktop/awesome-repo')
 repo.add()
 repo.commit(['README.md', 'LICENSE', '.gitignore'])
-repo.remote_add(origin = master)
+repo.remote_add(origin = 'master')
 repo.push('origin', 'master')
 ```
 Simple isn't it?!
