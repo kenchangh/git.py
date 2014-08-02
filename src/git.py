@@ -49,6 +49,7 @@ class Repo(object):
                                     'logs',
                                     'refs',
                                     'remotes')
+            print remotes_dir                       
             return os.listdir(remotes_dir)
         except OSError:
             return False
