@@ -22,10 +22,12 @@ def call(cmd):
                 try: 
                     # ~ will raise CommandError, need to expand
                     if call_list[1][0] == '~':
-                        call_list[1] = call_list[1].replace('~', os.path.expanduser('~')) 
+                        call_list[1] = call_list[1].replace('~',
+                                       os.path.expanduser('~')) 
                     os.chdir(call_list[1])
                 except:
-                    raise CommandError('{0} is not a valid command.'.format(call_list[0]))
+                    raise CommandError('{0} is not a valid command.'.format(
+                                       call_list[0]))
 
 def split_cmd(cmd):
     cmd_lines = cmd.splitlines()

@@ -43,12 +43,15 @@ class Repo(object):
         shell.call('git init {options}'.format(options = options))
 
     def get_remotes(self):
-        remotes_dir = path.join(self.repo,
-                                '.git',
-                                'logs',
-                                'refs',
-                                'remotes')
-        return os.listdir(remotes_dir)
+        try:
+            remotes_dir = path.join(self.repo,
+                                    '.git',
+                                    'logs',
+                                    'refs',
+                                    'remotes')
+            return os.listdir(remotes_dir)
+        except OSError:
+            return False
 
     def check_is_bare(self):
         git_dir = path.join(self.repo, '.git')
@@ -58,18 +61,19 @@ class Repo(object):
     def add(self, files=[], options=''):
         options = parse_options(options)
         if files == []:
-            shell.call('git add --all :/ {options}'.format(
+            shell.call('git add --all {options}'.format(
                        options = options))
         elif type(files) is list:
             files = ' '.join(files)
-            shell.call('git add {options}'.format(options = options) + files)
+            shell.call('git add {options}'.format(
+                       options = options) + files)
         else:
             raise TypeError('Files has to be list, not {0}'.format(
                             type_in_str(files)))
 
     def commit(self, files=[], message='', options=''):
         options = parse_options(options)
-        message = '-m {0} '.format(message)
+        message = '"-m {0} "'.format(message)
         if files == []:
             shell.call('git commit {options}{message}'.format(
                        options = options, message = message))
