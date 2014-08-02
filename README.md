@@ -1,6 +1,6 @@
 Git.py
 ======
-**Python bindings for Git**
+#### Python bindings for Git
 
 Table of Content
 ----------------
