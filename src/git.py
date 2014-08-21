@@ -35,10 +35,10 @@ def parse_options(options):
 class Repo(object):
 
     def __init__(self, repo=os.getcwd()):
+        shell.call('cd {repo}'.format(repo = repo))
         self.repo = repo
         self.is_bare = self.check_is_bare()
         self.remotes = self.get_remotes()
-        shell.call('cd {repo}'.format(repo = repo))
 
 
     def init(self, options=''):
